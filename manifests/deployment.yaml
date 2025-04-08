@@ -3,16 +3,16 @@ kind: Deployment
 metadata:
   labels:
     app: frontend
-  name: frontend
+  name: frontend-2-repos
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: frontend
+      app: frontend-2-repos
   template:
     metadata:
       labels:
-        app: frontend
+        app: frontend-2-repos
     spec:
       containers:
       - imagePullPolicy: Always
