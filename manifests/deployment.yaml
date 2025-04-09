@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - imagePullPolicy: Always
-        image: asia-southeast1-docker.pkg.dev/web-app-hosting-lehai/web-frontend-repo/frontend-react-app:ga-0.0.6
+        image: asia-southeast1-docker.pkg.dev/web-app-hosting-lehai/web-frontend-repo/frontend-react-app:ga-0.0.7
         name: frontend
         ports:
         - containerPort: 3000
