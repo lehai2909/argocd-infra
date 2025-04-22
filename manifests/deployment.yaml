@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: frontend
+    app: frontend-2-repos
   name: frontend-2-repos
 spec:
   replicas: 1
@@ -18,6 +18,12 @@ spec:
       - imagePullPolicy: Always
         image: asia-southeast1-docker.pkg.dev/web-app-hosting-lehai/web-frontend-repo/frontend-react-app:ga-0.0.7
         name: frontend
+        env: 
+        - name: BACKEND_URL
+          valueFrom:
+            configMapKeyRef:
+              name: frontend-config
+              key: BACKEND_URL
         ports:
         - containerPort: 3000
         resources:

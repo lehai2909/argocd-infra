@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: backend-helm-app
+  namespace: argocd
+spec:
+  project: default
+  source:
+    chart: backend-chart
+    repoURL: asia-southeast1-docker.pkg.dev/web-app-hosting-lehai/web-app-helm-repository  # note: the oci:// syntax is not included.
+    targetRevision: 0.0.2
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: helm-app

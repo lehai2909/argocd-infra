@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: backend
+  name: app-deployment
+  namespace: {{ .Values.namespace }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      # serviceAccountName: secret-manager-service-account
+      # volumes:
+      # - name: secrets-store-inline
+      #   csi:
+      #     driver: secrets-store.csi.k8s.io
+      #     readOnly: true
+      #     volumeAttributes:
+      #       secretProviderClass: "aws-secrets"
+      containers:
+        - image: asia-southeast1-docker.pkg.dev/sylvan-rampart-450802-j6/web-backend-repo/express-backend:v0.0.2
+          imagePullPolicy: Always
+          name: app-container
+          resources:
+            limits:
+              cpu: 250m
+              memory: 256Mi
+            requests:
+              cpu: 50m
+              memory: 128Mi
+          ports:
+            - containerPort: 8000
+          # volumeMounts:
+          # - name: secrets-store-inline
+          #   mountPath: "/mnt/secrets"
+          #   readOnly: true
