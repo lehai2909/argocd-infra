@@ -13,7 +13,8 @@ spec:
       releaseName: kestra
       values: |
         image:
-          image: asia-southeast1-docker.pkg.dev/heroic-night-453607-n0/kestra-custom-repository/kestra-custom:v0.0.4
+          image: asia-southeast1-docker.pkg.dev/heroic-night-453607-n0/kestra-custom-repository/kestra-custom
+          tag: v0.0.4
   destination:
     server: "https://kubernetes.default.svc"
     namespace: argocd-app
