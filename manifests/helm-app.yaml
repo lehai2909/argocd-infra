@@ -1,16 +1,16 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: sealed-secrets
+  name: kestra
   namespace: argocd
 spec:
   project: default
   source:
-    chart: sealed-secrets
-    repoURL: https://bitnami-labs.github.io/sealed-secrets
-    targetRevision: 1.16.1
+    chart: kestra
+    repoURL: https://helm.kestra.io/
+    targetRevision: 0.22.4
     helm:
-      releaseName: sealed-secrets
+      releaseName: kestra
   destination:
     server: "https://kubernetes.default.svc"
     namespace: argocd-app
