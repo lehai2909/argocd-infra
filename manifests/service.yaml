@@ -1,14 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: frontend-service-2-repos
-  # annotations:
-  #   service.beta.kubernetes.io/aws-load-balancer-type: external
-  #   service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: ip
-  #   service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
+  name: frontend-service
 spec:
   selector:
-    app: frontend-2-repos
+    app: frontend
   type: LoadBalancer
   ports:
     - protocol: TCP
