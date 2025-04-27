@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - imagePullPolicy: Always
-        image: asia-southeast1-docker.pkg.dev/web-app-hosting-lehai/web-frontend-repo/frontend-react-app:ga-0.0.12
+        image: asia-southeast1-docker.pkg.dev/heroic-night-453607-n0/web-app-internal-repository/frontend:v0.0.1
         name: frontend
         env: 
         - name: BACKEND_URL
