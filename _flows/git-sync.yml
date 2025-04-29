@@ -1,0 +1,26 @@
+id: sync_from_git
+namespace: system
+tasks:
+  - id: git
+    type: io.kestra.plugin.git.SyncFlows
+    url: https://github.com/lehai2909/argocd-infra.git
+    branch: kestra-flows
+    username: lehai2909
+    password: *
+    targetNamespace: prod
+    gitDirectory: _flows
+
+
+id: push_to_git
+namespace: system
+tasks:
+  - id: commit_and_push
+    type: io.kestra.plugin.git.PushFlows
+    url: https://github.com/lehai2909/argocd-infra.git
+    sourceNamespace: tutorial
+    targetNamespace: prod
+    flows: "*"
+    branch: kestra-flows
+    username: lehai2909
+    password: *
+    commitMessage: add flows to git
