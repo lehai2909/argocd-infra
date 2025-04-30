@@ -5,16 +5,17 @@ metadata:
   namespace: argocd
 spec:
   project: default
-  source:
-    chart: kestra
-    repoURL: https://helm.kestra.io/
-    targetRevision: 0.22.4
-    helm:
-      releaseName: kestra
-      values: |
-        image:
-          image: asia-southeast1-docker.pkg.dev/heroic-night-453607-n0/kestra-custom-repository/kestra-custom
-          tag: v0.0.4
+  sources:
+    - chart: kestra
+      repoURL: https://helm.kestra.io/
+      targetRevision: 0.22.4
+      helm:
+        releaseName: kestra
+        valueFiles: 
+          - $values/helm/hill/kestra/values.yaml
+    - repoURL: 'https://github.com/lehai2909/argocd-infra.git'
+      targetRevision: main
+      ref: values
   destination:
     server: "https://kubernetes.default.svc"
     namespace: argocd-app
