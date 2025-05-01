@@ -25,7 +25,7 @@ spec:
               name: frontend-config
               key: BACKEND_URL
         ports:
-        - containerPort: 3000
+        - containerPort: 80
         resources:
           requests:
             cpu: "0.2"
