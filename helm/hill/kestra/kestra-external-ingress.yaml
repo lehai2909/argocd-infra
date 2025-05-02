@@ -3,6 +3,10 @@ kind: Ingress
 metadata:
   name: kestra-custom-ingress
 spec:
+  tls:
+  - hosts:
+      - kestra-dev.haile.click
+    secretName: kestra-cert
   rules:
   - host: kestra-dev.haile.click
     http:
