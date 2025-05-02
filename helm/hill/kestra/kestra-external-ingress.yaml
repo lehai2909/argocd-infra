@@ -4,7 +4,8 @@ metadata:
   name: kestra-custom-ingress
 spec:
   rules:
-  - http:
+  - host: kestra-dev.haile.click
+    http:
       paths:
       - path: /
         pathType: Prefix
