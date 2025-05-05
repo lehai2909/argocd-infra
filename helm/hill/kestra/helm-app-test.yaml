@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: test-helm-app
+  namespace: argocd
+spec:
+  project: default
+  sources:
+    - path: helm/learn-helm
+      repoURL: https://github.com/lehai2909/argocd-infra.git
+      targetRevision: main
+      # helm:
+      #   releaseName: kestra
+      #   valueFiles: 
+      #     - $values/helm/hill/kestra/values.yaml
+    - repoURL: 'https://github.com/lehai2909/argocd-infra.git'
+      targetRevision: main
+      ref: values
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: argocd-app
