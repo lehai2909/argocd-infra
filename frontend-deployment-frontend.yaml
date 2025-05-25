@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: frontend
+  name: frontend
+  namespace: frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - env:
+        - name: BACKEND_URL
+          valueFrom:
+            configMapKeyRef:
+              key: BACKEND_URL
+              name: frontend-config
+        image: asia-southeast1-docker.pkg.dev/heroic-night-453607-n0/web-app-repository/frontend:ga-0.0.1
+        imagePullPolicy: Always
+        name: frontend
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            cpu: "0.5"
+            memory: 2G
+          requests:
+            cpu: "0.2"
+            memory: 0.5G
