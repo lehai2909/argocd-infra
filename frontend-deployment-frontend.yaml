@@ -22,7 +22,7 @@ spec:
             configMapKeyRef:
               key: BACKEND_URL
               name: frontend-config
-        image: image:tag
+        image: asia-southeast1-docker.pkg.dev/org-tools-458804/web-app-helm-repo/frontend-image:v0.0.1
         imagePullPolicy: Always
         name: frontend
         ports:
