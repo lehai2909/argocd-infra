@@ -1,0 +1,9 @@
+component: frontend
+namespace: frontend
+image:
+  repository: asia-southeast1-docker.pkg.dev/org-tools-458804/web-app-helm-repo/frontend-image
+  tag: v0.0.1
+service:
+  type: LoadBalancer
+  port: 80
+  targetPort: 80
