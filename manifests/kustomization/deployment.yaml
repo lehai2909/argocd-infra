@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - imagePullPolicy: Always
-        image: image:tag
+        image: asia-southeast1-docker.pkg.dev/org-tools-458804/web-app-helm-repo/frontend-image:tag
         name: frontend
         env: 
         - name: BACKEND_URL
