@@ -4,7 +4,6 @@ metadata:
   labels:
     app: frontend
   name: frontend
-  namespace: frontend
 spec:
   replicas: 1
   selector:
@@ -22,7 +21,7 @@ spec:
             configMapKeyRef:
               key: BACKEND_URL
               name: frontend-config
-        image: asia-southeast1-docker.pkg.dev/org-tools-458804/web-app-helm-repo/frontend-image:ga-0.0.2
+        image: asia-southeast1-docker.pkg.dev/org-tools-458804/web-app-helm-repo/frontend-image:ga-0.0.3
         imagePullPolicy: Always
         name: frontend
         ports:
