@@ -1,0 +1,104 @@
+global:
+  identity:
+    auth:
+      publicIssuerUrl: "https://camunda.haile.click/auth/realms/camunda-platform"
+      operate:
+        redirectUrl: "https://camunda.haile.click/operate"
+        existingSecret:
+          name: identity-secret-for-components
+      tasklist:
+        redirectUrl: "https://camunda.haile.click/tasklist"
+        existingSecret:
+          name: identity-secret-for-components
+      optimize:
+        redirectUrl: "https://camunda.haile.click/optimize"
+        existingSecret:
+          name: identity-secret-for-components
+      webModeler:
+        redirectUrl: "https://camunda.haile.click/modeler"
+        existingSecret:
+          name: identity-secret-for-components
+      connectors:
+        existingSecret:
+          name: identity-secret-for-components
+      console:
+        redirectUrl: "https://camunda.haile.click/console"
+        existingSecret:
+          name: identity-secret-for-components
+      zeebe:
+        existingSecret:
+          name: identity-secret-for-components
+
+  elasticsearch:
+    enabled: true
+    external: true
+    auth:
+      username: elastic
+      password: 50t0y2js5Ex0aH0k7IkrFz67
+    url:
+      protocol: http
+      host: quickstart-es-http
+      port: 9200
+
+  ingress:
+    enabled: true
+    className: nginx
+    host: "camunda.haile.click"
+    annotations:
+      cert-manager.io/issuer: "letsencrypt-prod"
+    tls:
+      enabled: true
+      secretName: camunda-tls
+
+identity:
+  contextPath: "/identity"
+  fullURL: "https://camunda.haile.click/identity"
+
+operate:
+  contextPath: "/operate"
+
+optimize:
+  contextPath: "/optimize"
+
+zeebeGateway:
+  resources:
+    requests:
+      cpu: 500m
+  contextPath: "/zeebe"
+  ingress:
+    grpc:
+      enabled: true
+      className: nginx
+      host: "zeebe.camunda.haile.click"
+
+console:
+  contextPath: "/console"
+  resources:
+    requests:
+      cpu: 500m
+
+connectors:
+  contextPath: "/connectors"
+
+tasklist:
+  contextPath: "/tasklist"
+  resources:
+    requests:
+      cpu: 500m
+
+webModeler:
+  # The context path is used for the web application that will be accessed by users in the browser.
+  # In addition, a WebSocket endpoint will be exposed on "[contextPath]-ws", e.g. "/modeler-ws".
+  contextPath: "/modeler"
+
+elasticsearch:
+  sysctlImage:
+    enabled: false
+  enabled: false
+
+identityKeycloak:
+  postgresql:
+    auth:
+      existingSecret: identity-secret-for-components
+  auth:
+    existingSecret: identity-secret-for-components
