@@ -6,7 +6,7 @@ metadata:
 spec:
   selector:
     app: {{.Values.component}}
-  type: LoadBalancer
+  type: {{.Values.service.type}}
   ports:
     - protocol: TCP
       port: {{.Values.service.port}}
