@@ -6,7 +6,7 @@ metadata:
   name: app-deployment-{{.Values.component}}
   namespace: {{.Values.namespace}}
 spec:
-  replicas: 1
+  replicas: {{.Values.replicas}}
   selector:
     matchLabels:
       app: {{.Values.component}}
