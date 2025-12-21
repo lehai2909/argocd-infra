@@ -2,7 +2,7 @@ component: frontend
 namespace: frontend
 image:
   repository: asia-southeast1-docker.pkg.dev/heroic-night-453607-n0/web-app-repository/frontend
-  tag: ga-0.0.7
+  tag: ga-0.0.8
 replicas: 3
 service:
   type: NodePort
