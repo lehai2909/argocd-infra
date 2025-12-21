@@ -1,8 +1,8 @@
 component: frontend
 namespace: frontend
 image:
-  repository: asia-southeast1-docker.pkg.dev/org-tools-458804/web-app-helm-repo/frontend-image
-  tag: v0.0.1
+  repository: asia-southeast1-docker.pkg.dev/heroic-night-453607-n0/web-app-repository/frontend
+  tag: ga-0.0.7
 service:
   type: LoadBalancer
   port: 80
