@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: {{.Values.backend.component}}
+  name: app-deployment-{{.Values.backend.component}}
+  namespace: {{.Values.backend.namespace}}
+spec:
+  replicas: {{.Values.backend.replicas}}
+  selector:
+    matchLabels:
+      app: {{.Values.backend.component}}
+  template:
+    metadata:
+      labels:
+        app: {{.Values.backend.component}}
+    spec:
+      containers:
+        - image: {{.Values.backend.image.repository}}:{{.Values.backend.image.tag}}
+          imagePullPolicy: Always
+          name: {{.Values.backend.component}}
+          resources:
+            limits:
+              cpu: 250m
+              memory: 256Mi
+            requests:
+              cpu: 50m
+              memory: 128Mi
+          ports:
+            - containerPort: {{.Values.backend.service.targetPort}}
+              protocol: TCP
