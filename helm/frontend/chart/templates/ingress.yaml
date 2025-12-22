@@ -10,7 +10,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: {{.Values.backend.component}}-proxy-service
+                name: {{.Values.backend.component}}-service
                 port:
                   number: 80
           - path: /
